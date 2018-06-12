@@ -55,7 +55,18 @@ module.exports = {
         use: ['html-loader']
       },
       {
-        test: /\.(gif|png|jpe?g)$/,
+        test: /\.(woff|woff2)(\?v=\d+\.\d+\.\d+)?/,
+        use: {
+          loader: "url-loader",
+          options: {
+            limit: 50000,
+            mimetype: "application/font-woff",
+            name: "./fonts/[name].[ext]",
+          }
+        }
+      },
+      {
+        test: /\.(gif|png|jpe?g|svg)$/,
         use: [
           {
             loader: 'file-loader',
